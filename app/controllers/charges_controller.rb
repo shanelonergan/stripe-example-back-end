@@ -6,20 +6,19 @@ class ChargesController < ApplicationController
 
     def create
 
-        begin
-            Stripe.api_key = ENV['STRIPE_SECRET_KEY']
-            token = params[:charge][:token]
-            price = params[:price]
+        Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+        token = params[:charge][:token]
+        price = params[:price]
 
-            charge = Stripe::Charge.create({
-                amount: price,
-                currency: 'usd',
-                source: token,
-                description: 'Test Charge!',
-            })
+        charge = Stripe::Charge.create({
+            amount: price,
+            currency: 'usd',
+            source: token,
+            description: 'Test Charge!',
+        })
 
-            render json: charge
-        end
+        render json: charge
+
     end
 
 end
