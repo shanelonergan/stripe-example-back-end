@@ -15,7 +15,7 @@ class ChargesController < ApplicationController
                 amount: price,
                 currency: 'usd',
                 source: token,
-                description: 'My First Test Charge (created for API docs)',
+                description: 'Test Charge!',
             })
 
             render json: charge
